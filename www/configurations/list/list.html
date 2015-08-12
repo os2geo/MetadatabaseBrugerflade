@@ -1,0 +1,15 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th><i class="fa fa-gears"></i> Konfigurationer</th>
+            <th><i class="fa fa-play"></i> Start</th>
+        </tr>
+        <tr ng-repeat="item in configurations">
+            <td><a ui-sref="config({organization:item.key,configuration:item.id})"><i class="fa fa-gear"></i> {{item.doc.name}}</a>
+            </td>
+            <td><a ng-href="/couchdb/{{appID}}/_design/app/index.html#/{{item.id}}/true"><i class="fa fa-play"></i></a>
+            </td>
+        </tr>
+    </table>
+</div>
+

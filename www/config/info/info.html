@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active">
+                <a ui-sref="config.info.wizard">
+                    <i class="fa fa-magic"></i> Wizard
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="config.info.text">
+                    <i class="fa fa-file-text-o"></i> Tekst
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="alert alert-warning clearfix" role="alert" ng-show="changed">
+    <div class="pull-right">
+        <button type="button" class="btn btn-warning" ng-click="save()"><i class="fa fa-save"></i> Gem</button>
+    </div>
+    <div><strong>Advarsel:</strong> Konfigurationen er blevet ændret, husk at gemme.</div>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="error">
+    <strong>Fejl:</strong> {{error}}
+</div>
+<div class="alert alert-success" role="alert" ng-show="success">
+    <strong>OK:</strong> {{success}}
+</div>
+<div ui-view ng-show="!missing"></div>

@@ -1,0 +1,45 @@
+<div class="form-group" ng-if="field.type==='ruler'">
+    <label for="id">Titel</label>
+    <input ng-model="field.id" type="text" class="form-control" id="title" placeholder="Titel" ng-change="$emit('validate')">
+</div>
+<div class="form-group">
+    <label for="type">Type</label>
+    <select class="form-control" class="form-control" id="type" ng-model="field.type" ng-change="changeType()">
+        <option>text</option>
+        <option>textarea</option>
+        <option>checkbox</option>
+        <option>datetime</option>
+        <option>email</option>
+        <option>number</option>
+        <option>radio</option>
+        <option>ruler</option>
+        <option>select</option>
+        <option>url</option>
+        <option>file</option>
+        <option>group</option>
+    </select>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <button class="btn btn-xs btn-default pull-right" ng-click="add()"><i class="fa fa-plus"></i>
+        </button>
+        <h3 class="panel-title"><a ng-click="isCategoriesCollapsed=!isCategoriesCollapsed"><i class="fa" ng-class="{'fa-minus-square-o':!isCategoriesCollapsed,'fa-plus-square-o':isCategoriesCollapsed}"></i></a> Felter</h3>
+    </div>
+    <div class="panel-body" collapse="isCategoriesCollapsed">
+        <div class="form-group">
+            <label>Formular felter</label>
+            <select class="form-control" ng-model="formfield" ng-options="r for r in formkeys" ng-change="addFormField()">
+                <option value="" selected>-- Vælg --</option>
+            </select>
+        </div>
+        <accordion>
+            <div ui-sortable ng-model="field.fields">
+                <accordion-group heading="{{item.id}}" ng-repeat="item in field.fields" ng-model="field.fields">
+                    <field field="item" parent-fields="field.fields" schema="schema.properties[item.id]">
+                    </field>
+                </accordion-group>
+            </div>
+        </accordion>
+    </div>
+</div>
+

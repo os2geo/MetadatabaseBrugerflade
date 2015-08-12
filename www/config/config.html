@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div ncy-breadcrumb></div>
+    <div class="page-header">
+        <h1><i class="fa fa-gear"></i> {{configuration.name}}</h1>
+    </div>
+    <ul class="nav nav-pills">
+        <li ui-sref-active="active">
+            <a ui-sref="config.wizard">
+                <div><i class="fa fa-2x fa-magic"></i>
+                </div>
+                <div>Wizard</div>
+            </a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="config.text">
+                <div><i class="fa fa-2x fa-file-text-o"></i>
+                </div>
+                <div>Tekst</div>
+            </a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="config.delete">
+                <div><i class="fa fa-2x fa-trash-o"></i>
+                </div>
+                <div>Slet</div>
+            </a>
+        </li>
+    </ul>
+    <div class="alert alert-warning clearfix" role="alert" ng-show="changed">
+        <div class="pull-right">
+            <button type="button" class="btn btn-warning" ng-click="save()"><i class="fa fa-save"></i> Gem</button>
+        </div>
+        <div><strong>Advarsel:</strong> Konfigurationen er blevet ændret, husk at gemme.</div>
+    </div>
+    <div class="alert alert-danger" role="alert" ng-show="error">
+        <strong>Fejl:</strong> {{error}}
+    </div>
+    <div class="alert alert-success" role="alert" ng-show="success">
+        <strong>OK:</strong> {{success}}
+    </div>
+    <div ui-view></div>
+</div>

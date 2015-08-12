@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Rediger konfiguration</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Database</label>
+            <p class="form-control-static">{{database.value}}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Navn</label>
+            <input ng-model="configuration.name" type="text" class="form-control" id="name" placeholder="Navn" ng-change="$emit('validate')">
+        </div>
+        <div class="form-group">
+            <label for="logo">Logo (HTML)</label>
+            <textarea ng-model="configuration.logo" class="form-control" id="logo" placeholder="<div></div>" ng-change="$emit('validate')"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="main">Main (HTML)</label>
+            <textarea ng-model="configuration.main" class="form-control" id="main" placeholder="<div></div>" ng-change="$emit('validate')"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="footer">Footer (HTML)</label>
+            <textarea ng-model="configuration.footer" class="form-control" id="footer" placeholder="<div></div>" ng-change="$emit('validate')"></textarea>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button class="btn btn-xs btn-default pull-right" ng-click="addField()"><i class="fa fa-plus"></i>
+                </button>
+                <h3 class="panel-title"><a style="" ng-click="isFormCollapsed=!isFormCollapsed"><i class="fa" ng-class="{'fa-minus-square-o':!isFormCollapsed,'fa-plus-square-o':isFormCollapsed}"></i></a> Formular</h3>
+            </div>
+
+            <div class="panel-body" collapse="isFormCollapsed">
+                <div class="form-group">
+                    <label>Formular felter</label>
+                    <select class="form-control" ng-model="formfield" ng-options="r for r in formkeys" ng-change="addFormField()">
+                        <option value="" selected>-- Vælg --</option>
+                    </select>
+                </div>
+                <accordion>
+                    <div ui-sortable ng-model="configuration.form">
+                        <accordion-group heading="{{item.id}}" ng-repeat="item in configuration.form" ng-model="configuration.form">
+                            <field field="item" parent-fields="configuration.form" schema="schema.properties[item.id]">
+                            </field>
+                        </accordion-group>
+                    </div>
+                </accordion>
+            </div>
+        </div>
+    </div>
+</div>
