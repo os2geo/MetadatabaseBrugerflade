@@ -1,2 +1,2 @@
-# MetadatabaseBrugerflade
+# Metadatabase Administrator
 Opsætning af meatadatabase
